@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 import {MarketcloudService} from '../../providers/marketcloud-service';
@@ -57,6 +57,7 @@ export class ItemPage {
       line_item.options = this.selectedVariants;
     }
 
+
     this.marketcloud.client.carts.add(this.configuration.get('cart_id'),[
         line_item
     ])
@@ -73,6 +74,7 @@ export class ItemPage {
     })
     .catch((error) => {
       loading.dismiss();
+      console.log(error);
       let alert = this.alertCtrl.create({
           title: 'Error',
           subTitle: 'An error has occurred, please retry.',

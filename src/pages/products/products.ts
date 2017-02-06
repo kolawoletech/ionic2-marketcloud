@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MarketcloudService } from '../../providers/marketcloud-service'; 
 import { ItemPage } from '../item/item';
@@ -13,7 +13,52 @@ import { ItemPage } from '../item/item';
   selector: 'page-products',
   templateUrl: 'products.html',
   providers: [],
-  entryComponents: [ItemPage]
+  entryComponents: [ItemPage],
+  animations: [
+ 
+    trigger('flip', [
+      state('flipped', style({
+        transform: 'rotate(180deg)',
+        backgroundColor: '#f50e80'
+      })),
+      transition('* => flipped', animate('400ms ease'))
+    ]),
+ 
+    trigger('flyInOut', [
+      state('in', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(150%, 0, 0)'
+      })),
+      transition('in => out', animate('200ms ease-in')),
+      transition('out => in', animate('200ms ease-out'))
+    ]),
+ 
+    trigger('fade', [
+      state('visible', style({
+        opacity: 1
+      })),
+      state('invisible', style({
+        opacity: 0.1
+      })),
+      transition('visible <=> invisible', animate('200ms linear'))
+    ]),
+ 
+    trigger('bounce', [
+      state('bouncing', style({
+        transform: 'translate3d(0,0,0)'
+      })),
+      transition('* => bouncing', [
+        animate('300ms ease-in', keyframes([
+          style({transform: 'translate3d(0,0,0)', offset: 0}),
+          style({transform: 'translate3d(0,-10px,0)', offset: 0.5}),
+          style({transform: 'translate3d(0,0,0)', offset: 1}) 
+        ]))
+      ])
+    ])
+ 
+  ]
 })
 export class ProductsPage {
 
@@ -54,5 +99,7 @@ export class ProductsPage {
   		product : product
   	})
   }
+
+  
 
 }
