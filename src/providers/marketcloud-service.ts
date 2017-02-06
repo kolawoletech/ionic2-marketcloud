@@ -25,7 +25,7 @@ export class MarketcloudService {
     // we will not have to re-create other instances of the client.
 
     this.client = new Marketcloud.Client({
-    	publicKey : '78007c41-7f1c-454e-8b1f-600c96fa24ba'
+    	publicKey : '9c7ef560-5f8b-4d53-a12f-e9d9333a3cef'
     });
 
     this.utils = Marketcloud.Utils;
