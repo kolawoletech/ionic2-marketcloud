@@ -22,7 +22,7 @@ import {ConfigurationService} from '../providers/configuration-service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProductsPage;
+  rootPage: any = CategoriesPage;
 
   // We will prefix our Storage values with a unique namespace
   // This is because if you have several apps built on this template
@@ -58,8 +58,8 @@ export class MyApp {
 
       // Object with references to pages
       this.pages = [
-        { title: 'Home', component: ProductsPage },
         { title: 'Categories', component: CategoriesPage },
+        { title: 'Home', component: ProductsPage },
         { title: 'Cart', component: CartPage }
       ];
 

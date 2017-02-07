@@ -22,8 +22,8 @@ import { Storage } from '@ionic/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ProductsPage,
     CategoriesPage,
+    ProductsPage,
     ItemPage,
     CartPage
   ],

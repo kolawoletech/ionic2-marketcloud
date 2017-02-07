@@ -18,6 +18,8 @@ export class MarketcloudService {
 
   utils:any;
 
+  marketcloud : any;
+
   constructor() {
 
     // Here we create an instance of the client
@@ -25,11 +27,28 @@ export class MarketcloudService {
     // we will not have to re-create other instances of the client.
 
     this.client = new Marketcloud.Client({
-    	publicKey : '9c7ef560-5f8b-4d53-a12f-e9d9333a3cef'
+    	publicKey : '78007c41-7f1c-454e-8b1f-600c96fa24ba'
     });
 
+
+    //Create a new instance of the client
+    this.marketcloud = new Marketcloud.Client({
+      public_key : '78007c41-7f1c-454e-8b1f-600c96fa24ba'
+    })
+
+      //Authenticates a user given email and password
+      this.marketcloud.users.create({
+                        name: "John Snow",
+                        email: "john.snow@thewall.com",
+                        password : "IknowKnothing"
+                  },function(err,response){
+      })    
     this.utils = Marketcloud.Utils;
 
+  }
+
+  getMarketCloud() {
+    return this.marketcloud;
   }
 
 }
