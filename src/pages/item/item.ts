@@ -5,6 +5,8 @@ import {MarketcloudService} from '../../providers/marketcloud-service';
 import {ConfigurationService} from '../../providers/configuration-service';
 
 import { Storage } from '@ionic/storage';
+
+import {CartPage} from '../../pages/cart/cart';
 /*
   Generated class for the Item page.
 
@@ -39,6 +41,10 @@ export class ItemPage {
 
   ionViewDidLoad() {
     
+  }
+
+  openCart() {
+    this.navCtrl.push(CartPage);
   }
 
   addToCart(product) {

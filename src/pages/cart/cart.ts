@@ -1,8 +1,10 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, NavParams,AlertController  } from 'ionic-angular';
 import { MarketcloudService } from '../../providers/marketcloud-service'; 
+import {AuthPage} from '../../pages/auth/auth';
+import {OrderPage} from '../../pages/order/order';
 import {ConfigurationService} from '../../providers/configuration-service';
-
+import {UserService} from '../../providers/user-service';
 /*
   Generated class for the Cart page.
 
@@ -15,8 +17,10 @@ import {ConfigurationService} from '../../providers/configuration-service';
 })
 export class CartPage {
   cart:any = { items:[]};
+	items:Array<any>;
   constructor(	public navCtrl: NavController,
   				public navParams: NavParams,
+					public userService: UserService,
   				public alertCtrl: AlertController,
   				public configuration: ConfigurationService,
   				public marketcloud: MarketcloudService) {
@@ -100,6 +104,14 @@ export class CartPage {
   	}).reduce((a,b) => {
   		return a+b;
   	});
+  }
+
+  proceedToCheckout(){
+	if(this.userService.isLoggedIn()) {
+     this.navCtrl.push(OrderPage, {items: this.items});
+   } else {
+     this.navCtrl.push(AuthPage);
+   }
   }
 
 }

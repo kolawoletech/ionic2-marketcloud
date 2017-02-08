@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar  color="primary">
     <ion-title>item</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="behind" padding>
 <ion-card>
   <img src="{{product.images[0]}}"/>
   <ion-card-content>
@@ -43,4 +43,14 @@
     </div>
   </ion-card-content>
 </ion-card>
+    
+
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div>
+      <button ion-button full (click)="openCart()"
+      [disabled]="true === requiredOptionsAreMissing()">go to cart</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

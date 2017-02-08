@@ -12,11 +12,12 @@ declare let marketcloud:any;
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class UserProvider {
+export class UserService {
   market:any;
   constructor(public marketProvider: MarketcloudService, public storage:StorageService) {
     console.log('Hello UserProvider Provider');
     this.market = this.marketProvider.getMarketCloud();
+    console.log(this.market);
   }
 
   isLoggedIn() {
