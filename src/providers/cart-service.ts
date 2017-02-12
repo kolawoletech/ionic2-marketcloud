@@ -1,15 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import {MarketProvider} from './market-provider';
-import {StorageProvider} from './storage-provider';
+import {MarketcloudService} from './marketcloud-service';
+import {StorageService} from './storage-service';
 import 'rxjs/add/operator/map';
 declare let BraintreePlugin:any;
 @Injectable()
 export class CartService {
   cartID:string;
+  amount:any;
+  items:Array<any>;
+ 
+  
   market:any;
-  constructor(public marketProvider: MarketProvider, public storage: StorageProvider, public http:Http) {
-    this.market = this.marketProvider.getMarketCloud();
+  constructor(public marketcloudService: MarketcloudService, public storage: StorageService, public http:Http) {
+    this.market = this.marketcloudService.getMarketCloud();
     let local_cart_id = this.storage.get('cart_id');
     if(local_cart_id) {
       this.cartID = local_cart_id;
@@ -27,7 +31,7 @@ export class CartService {
   } 
 
   intializePayments() {
-    let marketcloud_id = this.marketProvider.getMarketCloud().public;
+    let marketcloud_id = this.marketcloudService.getMarketCloud().public;
     console.log(marketcloud_id);
     let headers = new Headers({'Authorization': marketcloud_id});
     let promise = new Promise((res, rej)=> {
@@ -103,7 +107,7 @@ export class CartService {
     return promise;
   }
   
-  updateCart(items) {
+  updateCart(items){
     items = items.map((item) => {
         return {product_id: item.product_id, quantity: item.quantity};
     });
@@ -133,8 +137,9 @@ export class CartService {
     
     return promise;
   }
-  
+ // (messages: Message[]
   createOrder(items, address) {
+    
     items = items.map(function(item) {
       return {product_id:item.product_id, quantity: item.quantity};
     });

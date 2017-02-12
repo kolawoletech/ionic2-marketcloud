@@ -16,8 +16,8 @@ import {UserService} from '../../providers/user-service';
   templateUrl: 'cart.html'
 })
 export class CartPage {
-  cart:any = { items:[]};
-	items:Array<any>;
+  public cart:any = { items:[]};
+	public items:Array<any>;
   constructor(	public navCtrl: NavController,
   				public navParams: NavParams,
 					public userService: UserService,
@@ -97,7 +97,7 @@ export class CartPage {
   		return 0;
 
   	return this.cart.items.map((item) => {
-  		if (item.price_discount)
+  		if (item.price_discount) 
   			return item.quantity*item.price_discount;
   		else
   			return item.quantity*item.price;
@@ -108,7 +108,9 @@ export class CartPage {
 
   proceedToCheckout(){
 	if(this.userService.isLoggedIn()) {
-     this.navCtrl.push(OrderPage, {items: this.items});
+		
+		console.log(this.cart.items);
+     this.navCtrl.push(OrderPage, {items: this.cart.items});
    } else {
      this.navCtrl.push(AuthPage);
    }
