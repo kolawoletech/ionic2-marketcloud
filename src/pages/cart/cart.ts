@@ -24,9 +24,6 @@ export class CartPage {
   				public alertCtrl: AlertController,
   				public configuration: ConfigurationService,
   				public marketcloud: MarketcloudService) {
-  	
-
-
   }
 
   ionViewDidLoad() {
@@ -107,10 +104,8 @@ export class CartPage {
   }
 
   proceedToCheckout(){
-	if(this.userService.isLoggedIn()) {
-		
-		console.log(this.cart.items);
-     this.navCtrl.push(OrderPage, {items: this.cart.items});
+	if(this.userService.isLoggedIn()) {		
+    this.navCtrl.push(OrderPage, {items: this.cart.items});
    } else {
      this.navCtrl.push(AuthPage);
    }

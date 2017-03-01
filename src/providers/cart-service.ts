@@ -3,11 +3,16 @@ import {Http, Headers} from '@angular/http';
 import {MarketcloudService} from './marketcloud-service';
 import {StorageService} from './storage-service';
 import 'rxjs/add/operator/map';
-declare let BraintreePlugin:any;
+//import BraintreePlugin from 'BraintreePlugin';
+
+
+//import BraintreePlugin from 'BraintreePlugin';
+declare var BraintreePlugin: any;
+
 @Injectable()
 export class CartService {
   cartID:string;
-  amount:any;
+  amount:string;
   items:Array<any>;
  
   
@@ -40,6 +45,8 @@ export class CartService {
           rej(err);
         } else {
           let token = data.clientToken;
+          console.log(BraintreePlugin);
+          console.log(data);
           BraintreePlugin.initialize(token, () => res('done'), (error) => rej(error));
           console.log(data);
           res(data);
@@ -137,18 +144,21 @@ export class CartService {
     
     return promise;
   }
- // (messages: Message[]
+ 
   createOrder(items, address) {
     
     items = items.map(function(item) {
       return {product_id:item.product_id, quantity: item.quantity};
     });
+
     
     let order = {
       shipping_address: address,
       billing_address: address,
       items: items
     };
+
+    console.log(order);
     
     let promise = new Promise((resolve, reject) => {
       this.market.orders.create(order,(error, data) =>{
@@ -167,7 +177,7 @@ export class CartService {
       cancelText: "Cancel",
       title: "Purchase",
       ctaText: "Select Payment Method",
-      amount: "$" + amount.toString(),
+      amount: "R" + amount,
       primaryDescription: "Your Item",
       secondaryDescription :"Free shipping!"
     };

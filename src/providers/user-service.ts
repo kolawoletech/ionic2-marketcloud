@@ -17,7 +17,7 @@ export class UserService {
   constructor(public marketProvider: MarketcloudService, public storage:StorageService) {
     console.log('Hello UserProvider Provider');
     this.market = this.marketProvider.getMarketCloud();
-    console.log(this.market);
+    
   }
 
   isLoggedIn() {

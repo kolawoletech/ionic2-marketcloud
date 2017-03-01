@@ -45,6 +45,8 @@ export class OrderPage {
     let promise;
     let order_id;
     let nonce;
+    console.log(this.address);
+    console.log(this.items);
     if(this.address) {
       Object.keys(this.address).forEach(key => {
         if(this.address[key] == null) {
@@ -62,14 +64,17 @@ export class OrderPage {
     promise.then((order) => {
       order_id = order.id;
       this.cartService.setCartID(null);
+      console.log(this.addressForm.value);
+      console.log(this.addressForm);
       return this.cartService.getPayment(order.total, this.addressForm.value.full_name);
     })
     .then((data) => {
       nonce = data.nonce;
       this.cartService.createPayment(order_id, nonce)
       .then(data => {
-        let toast = this.util.getToast('Order is succesfull');
-        //this.nav.present(toast);
+        let toast = this.util.getToast('Order is successfull');
+        console.log('Order is succesfull');
+        //this.nav.pop(toast);
         this.address = {};
         this.nav.popToRoot();
       });
