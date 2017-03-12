@@ -5,6 +5,8 @@
 </ion-header>
 
 <ion-content padding class="order">
+   1 {{address}}2{{address.portal}}
+ 3 {{addressForm}}4{{addressForm.portal}}
  <form [formGroup]="addressForm">
   <ion-list>
      <ion-item>
@@ -44,7 +46,7 @@
   </ion-list>
   
   <div>
-    <button full primary (click)="processOrder()" [disabled]="!addressForm.valid">Order</button>
+    <button full primary (click)="processOrder()" >Order</button>
   </div>
  </form>
 </ion-content>

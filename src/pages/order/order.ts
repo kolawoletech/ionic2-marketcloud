@@ -72,7 +72,7 @@ export class OrderPage {
       nonce = data.nonce;
       this.cartService.createPayment(order_id, nonce)
       .then(data => {
-        let toast = this.util.getToast('Order is successfull');
+        // let toast = this.util.getToast('Order is successfull');
         console.log('Order is succesfull');
         //this.nav.pop(toast);
         this.address = {};

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http} from '@angular/http';
 import {MarketcloudService} from './marketcloud-service';
 import {StorageService} from './storage-service';
 import 'rxjs/add/operator/map';
@@ -38,7 +38,7 @@ export class CartService {
   intializePayments() {
     let marketcloud_id = this.marketcloudService.getMarketCloud().public;
     console.log(marketcloud_id);
-    let headers = new Headers({'Authorization': marketcloud_id});
+    // let headers = new Headers({'Authorization': marketcloud_id});
     let promise = new Promise((res, rej)=> {
       this.market.payments.braintree.createClientToken((err, data) => {
         if(err) {

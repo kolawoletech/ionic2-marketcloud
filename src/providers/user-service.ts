@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import {MarketcloudService} from './marketcloud-service';
@@ -13,7 +12,7 @@ declare let marketcloud:any;
 */
 @Injectable()
 export class UserService {
-  market:any;
+  market: any;
   constructor(public marketProvider: MarketcloudService, public storage:StorageService) {
     console.log('Hello UserProvider Provider');
     this.market = this.marketProvider.getMarketCloud();

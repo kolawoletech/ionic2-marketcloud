@@ -14,6 +14,8 @@ import '../../node_modules/marketcloud-js/dist/marketcloud.min';
 @Injectable()
 export class MarketcloudService {
 
+  market:any;
+
   client:any;
 
   utils:any;

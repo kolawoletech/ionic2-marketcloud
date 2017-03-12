@@ -3,8 +3,7 @@ import {NavController, Events, ToastController } from 'ionic-angular';
 import { UtilService } from '../../providers/util-service';
 import { UserService } from '../../providers/user-service';
 import { StorageService } from '../../providers/storage-service';
-import { Storage } from '@ionic/storage';
-import { FormBuilder, Validators,FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { validateEmail } from '../../validators/email';
 
 /*
@@ -57,7 +56,7 @@ export class AuthPage {
       this.nav.pop();
     })
     .catch((error) => {
-      let message = error.message;
+     // let message = error.message;
       //let toast = this.util.getToast(message);
      // this.nav.present(toast);
     });
