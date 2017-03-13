@@ -39,12 +39,7 @@ export class MarketcloudService {
     })
 
       //Authenticates a user given email and password
-      this.marketcloud.users.create({
-                        name: "John Snow",
-                        email: "john.snow@thewall.com",
-                        password : "IknowKnothing"
-                  },function(err,response){
-      })    
+   
     this.utils = Marketcloud.Utils;
 
   }

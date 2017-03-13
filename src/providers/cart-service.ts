@@ -3,10 +3,7 @@ import {Http} from '@angular/http';
 import {MarketcloudService} from './marketcloud-service';
 import {StorageService} from './storage-service';
 import 'rxjs/add/operator/map';
-//import BraintreePlugin from 'BraintreePlugin';
 
-
-//import BraintreePlugin from 'BraintreePlugin';
 declare var BraintreePlugin: any;
 
 @Injectable()
@@ -16,7 +13,7 @@ export class CartService {
   items:Array<any>;
  
   
-  market:any;
+  market: any;
   constructor(public marketcloudService: MarketcloudService, public storage: StorageService, public http:Http) {
     this.market = this.marketcloudService.getMarketCloud();
     let local_cart_id = this.storage.get('cart_id');
@@ -36,7 +33,7 @@ export class CartService {
   } 
 
   intializePayments() {
-    let marketcloud_id = this.marketcloudService.getMarketCloud().public;
+    let marketcloud_id = this.marketcloudService.getMarketCloud().publicKey;
     console.log(marketcloud_id);
     // let headers = new Headers({'Authorization': marketcloud_id});
     let promise = new Promise((res, rej)=> {
@@ -45,7 +42,7 @@ export class CartService {
           rej(err);
         } else {
           let token = data.clientToken;
-          console.log(BraintreePlugin);
+          console.log(token);
           console.log(data);
           BraintreePlugin.initialize(token, () => res('done'), (error) => rej(error));
           console.log(data);
@@ -173,6 +170,7 @@ export class CartService {
   }
 
   getPayment(amount, user) {
+    this.intializePayments();
     var options = {
       cancelText: "Cancel",
       title: "Purchase",
@@ -194,31 +192,6 @@ export class CartService {
     });
     return promise; 
   }
-  
-  // getPayment(amount,user) {
-  //   let options = {
-  //      description: 'Order Payment Successful',
-  //       currency: 'INR',
-  //       key: 'rzp_test_cVALY8lcJx6VZ5',
-  //       amount: amount.toString(),
-  //       name: name,
-  //       prefill: {email: user.email, name:user.name},
-  //       theme: {color: '#F37254'}
-  //   };
-    
-  //   var promise = new Promise((resolve, reject) => {
-  //      let success, error;
-  //      success = (payment_id) => {
-  //        resolve(payment_id);
-  //      };
-  //      error = (error) => {
-  //        reject(error);
-  //      };
-  //      RazorpayCheckout.open(options,success, error);
-  //   });
-    
-  //   return promise;   
-  // }
 
   createPayment(order_id, nonce) {
     let promise = new Promise((res, rej) => {
