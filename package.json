@@ -22,6 +22,10 @@
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "es6-shim": "^0.35.0",
+    "express": "^4.13.4",
     "@ionic/storage": "1.1.7",
     "ionic-angular": "2.0.0-rc.5",
     "ionic-native": "2.2.11",
@@ -33,7 +37,16 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
-    "typescript": "2.0.9"
+    "typescript": "2.0.9",
+        "del": "2.2.0",
+    "gulp": "3.9.1",
+    "gulp-watch": "4.3.5",
+    "ionic-gulp-browserify-typescript": "^1.1.0",
+    "ionic-gulp-fonts-copy": "^1.0.0",
+    "ionic-gulp-html-copy": "^1.0.0",
+    "ionic-gulp-sass-build": "^1.0.0",
+    "ionic-gulp-scripts-copy": "^2.0.0",
+    "run-sequence": "1.1.5"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
