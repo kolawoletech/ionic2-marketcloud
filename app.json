@@ -1,0 +1,7 @@
+{
+  "name":"SSL",
+  "description": "A simple Ionic 2 and MEAN Todo App that's ready for Heroku",
+  "repository": "https://github.com/kolawoletech/ionic2-marketcloud",
+  "logo": "http://ionicframework.com/img/ionic-logo-blog.png",
+  "keywords": ["ionic 2", "Angular 2", "node", "express", "heroku", "static"]
+}
