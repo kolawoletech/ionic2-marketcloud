@@ -4,11 +4,30 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <ion-content>
+    <img src="assets/img/ssladjusted.png" class="menu-logo"/>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
+      </button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        Shop
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
+        <ion-icon item-left [name]="menuItem.icon"></ion-icon>
+        {{menuItem.title}}
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Help
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">
+        <ion-icon item-left [name]="menuItem.icon"></ion-icon>
+        {{menuItem.title}}
       </button>
     </ion-list>
   </ion-content>

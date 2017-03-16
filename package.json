@@ -10,6 +10,8 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
+    "@types/leaflet": "^1.0.36",
+    "leaflet": "^1.0.1",
     "@angular/common": "2.2.1",
     "@angular/compiler": "2.2.1",
     "@angular/compiler-cli": "2.2.1",
@@ -38,8 +40,15 @@
     "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-geolocation"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    "ios",
+    {
+      "platform": "android",
+      "locator": "windows"
+    }
+  ],
   "description": "ionic2-marketcloud: An Ionic project"
 }

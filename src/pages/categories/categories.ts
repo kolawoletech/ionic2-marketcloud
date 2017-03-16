@@ -5,6 +5,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MarketcloudService } from '../../providers/marketcloud-service'; 
 
 import { ProductsPage } from '../products/products';
+import { WelcomePage } from '../welcome/welcome';
 /*
   Generated class for the Categories page.
 
@@ -49,6 +50,11 @@ export class CategoriesPage {
         category_id : category.id
       }
     });
+  }
+
+  goToRealEstateCategory() {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(WelcomePage);
   }
 
 }

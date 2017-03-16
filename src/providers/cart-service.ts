@@ -34,16 +34,21 @@ export class CartService {
 
   intializePayments() {
     let marketcloud_id = this.marketcloudService.getMarketCloud().publicKey;
-    console.log(marketcloud_id);
+    console.log(marketcloud_id + 'Happening here 1');
     // let headers = new Headers({'Authorization': marketcloud_id});
     let promise = new Promise((res, rej)=> {
+      console.log(marketcloud_id + 'Happening here 2');
+      console.log(this.market);
       this.market.payments.braintree.createClientToken((err, data) => {
         if(err) {
+          console.log(err);
+          console.log(this.market);
           rej(err);
         } else {
           let token = data.clientToken;
           console.log(token);
-          console.log(data);
+          console.log(data + ' thisintialise');
+          console.log(BraintreePlugin);
           BraintreePlugin.initialize(token, () => res('done'), (error) => rej(error));
           console.log(data);
           res(data);
@@ -157,6 +162,7 @@ export class CartService {
 
     console.log(order);
     
+    
     let promise = new Promise((resolve, reject) => {
       this.market.orders.create(order,(error, data) =>{
         if(data) {
@@ -166,11 +172,13 @@ export class CartService {
         }
       })
     });
+    
+    console.log(promise);
     return promise;
   }
 
   getPayment(amount, user) {
-    this.intializePayments();
+    console.log(options  + "Here One");
     var options = {
       cancelText: "Cancel",
       title: "Purchase",
@@ -179,6 +187,8 @@ export class CartService {
       primaryDescription: "Your Item",
       secondaryDescription :"Free shipping!"
     };
+    console.log(promise);
+    console.log(options + "Here Two");
     var promise = new Promise((res, rej) => {
       BraintreePlugin.presentDropInPaymentUI(options, function (result) {
         if (result.userCancelled) {
@@ -190,6 +200,7 @@ export class CartService {
         }
       });
     });
+    console.log(promise);
     return promise; 
   }
 

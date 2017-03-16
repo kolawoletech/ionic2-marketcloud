@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content class="behind" padding>
-  <ion-list>
+<ion-list>
   <ion-item class="behind" *ngFor="let category of categories" (click)="showProductsInCategory(category)">
     <ion-avatar item-left>
       <img src="{{category.image_url || 'https://marketcloud.azureedge.net/website-v2/logo-text-center-padding.png'}}">
@@ -22,7 +22,14 @@
     <h1>{{category.name}}</h1>
   </ion-item>
 </ion-list>
-
+<ion-list>
+  <ion-item class="behind" (click)="goToRealEstateCategory()">
+    <ion-avatar item-left>
+      <img src="{{'https://marketcloud.azureedge.net/website-v2/logo-text-center-padding.png'}}">
+    </ion-avatar>
+    <h1>Real Estate</h1>
+  </ion-item>
+</ion-list>
 
 </ion-content>
 

@@ -8,6 +8,25 @@ import { CartPage } from '../pages/cart/cart';
 import { AuthPage } from '../pages/auth/auth';
 import { OrderPage } from '../pages/order/order';
 
+//Deivery Pages
+import {DeliveryPage} from '../pages/delivery/delivery';
+// Delivery Providers
+import {DeliveryService} from '../providers/delivery-service';
+
+
+//Real Estate Pages
+import {WelcomePage} from '../pages/welcome/welcome';
+import {PropertyListPage} from '../pages/property-list/property-list';
+import {PropertyDetailPage} from '../pages/property-detail/property-detail';
+import {BrokerListPage} from '../pages/broker-list/broker-list';
+import {BrokerDetailPage} from '../pages/broker-detail/broker-detail';
+import {FavoriteListPage} from '../pages/favorite-list/favorite-list';
+import {AboutPage} from '../pages/about/about';
+
+//Real Estate Providers
+import { PropertyService } from "../providers/property-service-mock";
+import { BrokerService } from "../providers/broker-service-mock";
+
 import { MarketcloudService } from '../providers/marketcloud-service';
 import { ConfigurationService } from '../providers/configuration-service';
 import { StorageService } from '../providers/storage-service';
@@ -25,7 +44,14 @@ import { Storage } from '@ionic/storage';
     ItemPage,
     CartPage,
     OrderPage,
-    AuthPage
+    AuthPage,
+    WelcomePage,
+    AboutPage,
+    PropertyListPage,
+    PropertyDetailPage,
+    FavoriteListPage,
+    BrokerListPage,
+    BrokerDetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +64,14 @@ import { Storage } from '@ionic/storage';
     ItemPage,
     CartPage,
     OrderPage,
-    AuthPage
+    AuthPage,
+    WelcomePage,
+    AboutPage,
+    PropertyListPage,
+    PropertyDetailPage,
+    FavoriteListPage,
+    BrokerListPage,
+    BrokerDetailPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -48,7 +81,9 @@ import { Storage } from '@ionic/storage';
     StorageService,
     UtilService,
     CartService,
-    Storage
+    Storage,
+    PropertyService,
+    BrokerService
   ]
 })
 export class AppModule {}

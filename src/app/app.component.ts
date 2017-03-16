@@ -9,15 +9,27 @@ import { Storage } from '@ionic/storage';
 import { CartPage } from '../pages/cart/cart';
 import { ProductsPage } from '../pages/products/products';
 import { CategoriesPage } from '../pages/categories/categories';
+import { PropertyListPage } from '../pages/property-list/property-list';
+import { BrokerListPage } from '../pages/broker-list/broker-list';
+import { FavoriteListPage } from '../pages/favorite-list/favorite-list';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { AboutPage } from '../pages/about/about';
+import { DeliveryPage } from '../pages/delivery/delivery';
 
 
 import {MarketcloudService} from '../providers/marketcloud-service';
 import {ConfigurationService} from '../providers/configuration-service';
+import {CartService} from '../providers/cart-service';
 
+export interface MenuItem {
+  title: string;
+  component: any;
+  icon: string;
+}
 
 @Component({
   templateUrl: 'app.html',
-  providers: [MarketcloudService],
+  providers: [MarketcloudService, CartService],
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -34,8 +46,15 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
+ 
+  appMenuItems: Array<MenuItem>;
+
+  helpMenuItems: Array<MenuItem>;
+  
+
   constructor(public platform: Platform,
               private configuration: ConfigurationService,
+              private cartService: CartService,
               private marketcloud: MarketcloudService,
               public storage: Storage,
               private alertCtrl: AlertController) {
@@ -55,15 +74,26 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-
       // Object with references to pages
       this.pages = [
         { title: 'Categories', component: CategoriesPage },
         { title: 'Home', component: ProductsPage },
-        { title: 'Cart', component: CartPage }
+        { title: 'Cart', component: CartPage },
+        { title: 'Real Estate', component: WelcomePage }
       ];
 
 
+    this.appMenuItems = [
+      {title: 'Properties', component: PropertyListPage, icon: 'home'},
+      {title: 'Brokers', component: BrokerListPage, icon: 'people'},
+      {title: 'Favorites', component: FavoriteListPage, icon: 'star'},
+      {title: 'Delivery', component: DeliveryPage, icon: 'delivery'}
+    ];
+
+    this.helpMenuItems = [
+      {title: 'Welcome', component: WelcomePage, icon: 'bookmark'},
+      {title: 'About', component: AboutPage, icon: 'information-circle'},
+    ];
       
 
       // Marketcloud
@@ -76,10 +106,10 @@ export class MyApp {
           // If value is null then we don't have a cart_id in the storage
  
           // Then we don't have a cart and we must create one
-
+          this.cartService.intializePayments();
           this.marketcloud.client.carts.create({})
           .then((response) => {
-
+            
             // The cart was successfully created and returned by Marketcloud
             // We immediatly store the id in the device's storage.
             this.storage.set(this.marketcloudAppNamespace+'_cart_id',response.data.id)
@@ -106,6 +136,7 @@ export class MyApp {
           })
         } else {
           console.info("Using cart with id "+value);
+          this.cartService.intializePayments();
           this.configuration.set('cart_id',value);
         }
       })
