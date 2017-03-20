@@ -35,10 +35,6 @@
     "sw-toolbox": "3.4.0",
     "zone.js": "0.6.26"
   },
-   "engines": {
-    "node": "6.10.0",
-    "npm": "3.10.0"
-  },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
     "typescript": "2.0.9"
