@@ -33,11 +33,12 @@
     "marketcloud-js": "^2.0.3",
     "rxjs": "5.0.0-beta.12",
     "sw-toolbox": "3.4.0",
-    "zone.js": "0.6.26",
-        "@ionic/app-scripts": "1.0.0",
-    "typescript": "2.0.9"
+    "zone.js": "0.6.26"
   },
-
+  "devDependencies": {
+      "@ionic/app-scripts": "1.0.0",
+      "typescript": "2.0.9"
+  },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
