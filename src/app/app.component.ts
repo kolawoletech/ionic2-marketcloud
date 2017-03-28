@@ -73,7 +73,8 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-      Splashscreen.hide();
+      this.cartService.intializePayments();
+      //Splashscreen.hide();
       // Object with references to pages
       this.pages = [
         { title: 'Categories', component: CategoriesPage },
@@ -106,7 +107,7 @@ export class MyApp {
           // If value is null then we don't have a cart_id in the storage
  
           // Then we don't have a cart and we must create one
-          this.cartService.intializePayments();
+          //this.cartService.intializePayments();
           this.marketcloud.client.carts.create({})
           .then((response) => {
             
@@ -135,8 +136,9 @@ export class MyApp {
             
           })
         } else {
+          //this.cartService.intializePayments();
           console.info("Using cart with id "+value);
-          this.cartService.intializePayments();
+          
           this.configuration.set('cart_id',value);
         }
       })

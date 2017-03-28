@@ -6,6 +6,7 @@ import { MarketcloudService } from '../../providers/marketcloud-service';
 
 import { ProductsPage } from '../products/products';
 import { WelcomePage } from '../welcome/welcome';
+import { DeliveryPage } from '../delivery/delivery';
 /*
   Generated class for the Categories page.
 
@@ -55,6 +56,11 @@ export class CategoriesPage {
   goToRealEstateCategory() {
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(WelcomePage);
+  }
+
+  goToDeliveryCategory() {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(DeliveryPage);
   }
 
 }

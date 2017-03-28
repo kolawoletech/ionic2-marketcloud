@@ -22302,6 +22302,11 @@ page-categories ion-list {
   background-color: #c0cbe3;
 }
 
+page-delivery #map {
+  width: 100%;
+  height: 100%;
+}
+
 page-item .behind {
   background-color: #c0cbe3;
 }

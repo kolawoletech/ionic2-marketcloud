@@ -11,7 +11,7 @@ import { OrderPage } from '../pages/order/order';
 //Deivery Pages
 import {DeliveryPage} from '../pages/delivery/delivery';
 // Delivery Providers
-import {DeliveryService} from '../providers/delivery-service';
+//import {DeliveryService} from '../providers/delivery-service';
 
 
 //Real Estate Pages
@@ -51,7 +51,8 @@ import { Storage } from '@ionic/storage';
     PropertyDetailPage,
     FavoriteListPage,
     BrokerListPage,
-    BrokerDetailPage
+    BrokerDetailPage,
+    DeliveryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -71,7 +72,8 @@ import { Storage } from '@ionic/storage';
     PropertyDetailPage,
     FavoriteListPage,
     BrokerListPage,
-    BrokerDetailPage
+    BrokerDetailPage,
+    DeliveryPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
