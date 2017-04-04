@@ -14,7 +14,7 @@ import { BrokerListPage } from '../pages/broker-list/broker-list';
 import { FavoriteListPage } from '../pages/favorite-list/favorite-list';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { AboutPage } from '../pages/about/about';
-import { DeliveryPage } from '../pages/delivery/delivery';
+import { ModalAutocompleteItems } from '../pages/delivery/delivery';
 
 
 import {MarketcloudService} from '../providers/marketcloud-service';
@@ -88,7 +88,7 @@ export class MyApp {
       {title: 'Properties', component: PropertyListPage, icon: 'home'},
       {title: 'Brokers', component: BrokerListPage, icon: 'people'},
       {title: 'Favorites', component: FavoriteListPage, icon: 'star'},
-      {title: 'Delivery', component: DeliveryPage, icon: 'delivery'}
+      {title: 'Delivery', component: ModalAutocompleteItems, icon: 'delivery'}
     ];
 
     this.helpMenuItems = [

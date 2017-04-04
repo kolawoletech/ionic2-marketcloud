@@ -9,7 +9,9 @@ import { AuthPage } from '../pages/auth/auth';
 import { OrderPage } from '../pages/order/order';
 
 //Deivery Pages
-import {DeliveryPage} from '../pages/delivery/delivery';
+import {ModalAutocompleteItems} from '../pages/delivery/delivery';
+import { PageGmapAutocomplete } from '../pages/page-gmap-autocomplete/page-gmap-autocomplete';
+
 // Delivery Providers
 //import {DeliveryService} from '../providers/delivery-service';
 
@@ -52,7 +54,8 @@ import { Storage } from '@ionic/storage';
     FavoriteListPage,
     BrokerListPage,
     BrokerDetailPage,
-    DeliveryPage
+    ModalAutocompleteItems,
+    PageGmapAutocomplete
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -73,7 +76,8 @@ import { Storage } from '@ionic/storage';
     FavoriteListPage,
     BrokerListPage,
     BrokerDetailPage,
-    DeliveryPage
+    ModalAutocompleteItems,
+    PageGmapAutocomplete
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -1,42 +1,58 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
-
-
-/*
-  Generated class for the Delivery page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-declare let google;
+declare var google: any;
 
 @Component({
-  selector: 'page-delivery',
-  templateUrl: 'delivery.html'
+    selector: 'page-delivery',
+    templateUrl: 'delivery.html'
 })
-export class DeliveryPage {
+export class ModalAutocompleteItems implements OnInit{
 
-  @ViewChild('map') mapElement;
-  map : any;
+    autocompleteItems: any;
+    autocomplete: any;
+    acService:any;
+    placesService: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+    constructor(public viewCtrl: ViewController) { 
+    }
 
-  ionViewDidLoad() {
-    this.initMap();
-  }
- 
-  initMap(){
+    ngOnInit() {
+        this.acService = new google.maps.places.AutocompleteService();        
+        this.autocompleteItems = [];
+        this.autocomplete = {
+            query: ''
+        };        
+    }
 
-    let latLng = new google.maps.LatLng(25.7479, 28.2293);
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 
-    let mapOptions = {
-      center: latLng,
-      zoom:15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    chooseItem(item: any) {
+        console.log('modal > chooseItem > item > ', item);
+        this.viewCtrl.dismiss(item);
+    }
 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    updateSearch() {
+        console.log('modal > updateSearch');
+        if (this.autocomplete.query == '') {
+            this.autocompleteItems = [];
+            return;
+        }
+        let self = this;
+        let config = { 
+            types:  ['geocode'], // other types available in the API: 'establishment', 'regions', and 'cities'
+            input: this.autocomplete.query, 
+            componentRestrictions: { country: 'ZA' } 
+        }
+        this.acService.getPlacePredictions(config, function (predictions, status) {
+            console.log('modal > getPlacePredictions > status > ', status);
+            self.autocompleteItems = [];            
+            predictions.forEach(function (prediction) {              
+                self.autocompleteItems.push(prediction);
+            });
+        });
+    }
 
-  }
 }

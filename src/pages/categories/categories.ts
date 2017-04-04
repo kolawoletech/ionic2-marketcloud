@@ -6,7 +6,7 @@ import { MarketcloudService } from '../../providers/marketcloud-service';
 
 import { ProductsPage } from '../products/products';
 import { WelcomePage } from '../welcome/welcome';
-import { DeliveryPage } from '../delivery/delivery';
+import { ModalAutocompleteItems } from '../delivery/delivery';
 /*
   Generated class for the Categories page.
 
@@ -60,7 +60,7 @@ export class CategoriesPage {
 
   goToDeliveryCategory() {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(DeliveryPage);
+    this.navCtrl.push(ModalAutocompleteItems);
   }
 
 }
