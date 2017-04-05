@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        Delivery Form
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button icon-right (click)="next()">Next <ion-icon name="arrow-forward"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+ 
+<ion-slides #signupSlider pager>
+   <ion-slide>
+ 
+    <ion-card>
+
+      <ion-card-header>
+        Request a Bakkie/Truck for Delivery
+      </ion-card-header>
+
+      <ion-card-content>
+        Fill a request form by clicking the next button.<br>
+      </ion-card-content>
+
+    </ion-card>
+ 
+  </ion-slide>
+  <ion-slide>
+ 
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+ 
+    <ion-list no-lines>
+ 
+        <form [formGroup]="slideOneForm">
+ 
+            <ion-item>
+                <ion-label floating>First Name</ion-label>
+                <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+ 
+            <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+ 
+            <ion-item>
+                <ion-label floating>Last Name</ion-label>
+                <ion-input formControlName="lastName" type="text" ></ion-input>
+            </ion-item>
+ 
+            <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+ 
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+ 
+            <ion-item *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty || submitAttempt)">
+                <p>Please enter a valid email.</p>
+            </ion-item>
+ 
+            <ion-item>
+                <ion-label floating>Phone Number</ion-label>
+                <ion-input formControlName="phone" type="text" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+ 
+            <ion-item *ngIf="!slideOneForm.controls.phone.valid  && (slideOneForm.controls.phone.dirty || submitAttempt)">
+                <p>Please enter a valid phone number.</p>
+            </ion-item>
+        </form>
+ 
+    </ion-list>
+ 
+  </ion-slide>
+ 
+  <ion-slide>
+ 
+    <ion-list no-lines>
+ 
+        <form [formGroup]="slideTwoForm">
+ 
+            <ion-item>
+                <ion-label floating>Pick Up Address</ion-label>
+                <ion-input  formControlName="pickup" type="text"></ion-input>
+            </ion-item>
+ 
+            <ion-item>
+                <ion-label floating>Destination Address</ion-label>
+                <ion-input  formControlName="destination" type="text"></ion-input>
+            </ion-item>
+ 
+
+ 
+            <ion-item>
+                <ion-label floating>Time</ion-label>
+                <ion-select  formControlName="time">
+                    <ion-option value="now" checked="true">Now</ion-option>
+                    <ion-option value="tomorrow">Tomorrow</ion-option>
+                    <ion-option value="weekend">Upcoming Weekend</ion-option>
+                    <ion-option value="appointment">We need to make an Appointment</ion-option>
+                </ion-select>
+            </ion-item>
+ 
+            <ion-item>
+                <ion-label floating>Notes</ion-label>
+                <ion-textarea formControlName="notes"></ion-textarea>
+            </ion-item>
+ 
+        </form>
+ 
+    </ion-list>
+ 
+    <button ion-button full color="primary" (click)="save()">Create Account!</button>
+ 
+  </ion-slide>
+ 
+</ion-slides>
+ 
+</ion-content>

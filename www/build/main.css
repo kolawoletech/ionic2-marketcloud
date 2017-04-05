@@ -22298,6 +22298,28 @@ page-categories ion-list {
   background-color: #c0cbe3;
 }
 
+.ios page-delivery-form p, .md page-delivery-form p {
+  font-size: 0.8em;
+  color: #d2d2d2;
+}
+
+.ios page-delivery-form .swiper-slide, .md page-delivery-form .swiper-slide {
+  display: block;
+}
+
+.ios page-delivery-form ion-label, .ios page-delivery-form .select-text, .md page-delivery-form ion-label, .md page-delivery-form .select-text {
+  margin-left: 10px;
+}
+
+.ios page-delivery-form ion-input, .ios page-delivery-form ion-select, .ios page-delivery-form ion-textarea, .md page-delivery-form ion-input, .md page-delivery-form ion-select, .md page-delivery-form ion-textarea {
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+}
+
+.ios page-delivery-form .invalid, .md page-delivery-form .invalid {
+  border: 1px solid #ea6153;
+}
+
 page-item .behind {
   background-color: #c0cbe3;
 }
