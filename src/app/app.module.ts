@@ -13,6 +13,10 @@ import {ModalAutocompleteItems} from '../pages/delivery/delivery';
 import { PageGmapAutocomplete } from '../pages/page-gmap-autocomplete/page-gmap-autocomplete';
 import { DeliveryFormPage } from '../pages/delivery-form/delivery-form';
 
+//Cleaning Pages
+import { CleaningFormPage } from '../pages/cleaning-form/cleaning-form';
+
+
 // Delivery Providers
 //import {DeliveryService} from '../providers/delivery-service';
 
@@ -57,7 +61,8 @@ import { Storage } from '@ionic/storage';
     BrokerDetailPage,
     ModalAutocompleteItems,
     PageGmapAutocomplete,
-    DeliveryFormPage
+    DeliveryFormPage,
+    CleaningFormPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -80,7 +85,8 @@ import { Storage } from '@ionic/storage';
     BrokerDetailPage,
     ModalAutocompleteItems,
     PageGmapAutocomplete,
-    DeliveryFormPage
+    DeliveryFormPage,
+    CleaningFormPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

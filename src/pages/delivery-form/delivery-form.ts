@@ -38,6 +38,8 @@ export class DeliveryFormPage {
           time: [''],
           notes: ['']
       }); 
+    
+
     }
  
     next(){

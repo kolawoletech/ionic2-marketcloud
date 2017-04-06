@@ -9,6 +9,7 @@ import { WelcomePage } from '../welcome/welcome';
 import { ModalAutocompleteItems } from '../delivery/delivery';
 
 import { DeliveryFormPage } from '../delivery-form/delivery-form';
+import { CleaningFormPage } from '../cleaning-form/cleaning-form';
 /*
   Generated class for the Categories page.
 
@@ -60,9 +61,13 @@ export class CategoriesPage {
     this.navCtrl.push(WelcomePage);
   }
 
-  goToDeliveryCategory() {
+  goToDeliveryForm() {
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(DeliveryFormPage);
   }
 
+  goToCleaningForm() {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(CleaningFormPage);
+  }
 }

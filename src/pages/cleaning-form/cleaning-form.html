@@ -1,0 +1,214 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Cleaning Services Form
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="next()">Next <ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides #signupSlider pager>
+    <ion-slide>
+
+      <ion-card>
+
+        <ion-card-header>
+          Request Cleaning
+        </ion-card-header>
+
+        <ion-card-content>
+          Fill a request form by clicking the next button.<br>
+          <p>Form the form for price estimate and we will visit for invoice generation and cost confirmation</p>
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-slide>
+    <ion-slide>
+
+      <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+      <ion-list no-lines>
+
+        <form [formGroup]="slideOneForm">
+
+          <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+            <p>Please enter a valid name.</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input formControlName="lastName" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+            <p>Please enter a valid name.</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty || submitAttempt)">
+            <p>Please enter a valid email.</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Phone Number</ion-label>
+            <ion-input formControlName="phone" type="text" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!slideOneForm.controls.phone.valid  && (slideOneForm.controls.phone.dirty || submitAttempt)">
+            <p>Please enter a valid phone number.</p>
+          </ion-item>
+        </form>
+
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-list no-lines>
+
+        <form [formGroup]="slideTwoForm">
+
+          <ion-item>
+            <ion-label floating> Address</ion-label>
+            <ion-input formControlName="address" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Type</ion-label>
+            <ion-select formControlName="type">
+              <ion-option value="office" checked="true">Office</ion-option>
+              <ion-option value="domestic">Domestic</ion-option>
+
+            </ion-select>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-label floating>Frequency</ion-label>
+            <ion-select formControlName="frequency">
+              <ion-option value="once-off" checked="true">Once Off(Spring Clean)</ion-option>
+              <ion-option value="moving-in">Moving In</ion-option>
+              <ion-option value="moving-out">Moving Out</ion-option>
+              <ion-option value="daily">Daily</ion-option>
+              <ion-option value="weekly">Weeekly</ion-option>
+              <ion-option value="fortnightly">Fortnightly</ion-option>
+              <ion-option value="monthly">Monthly</ion-option>
+
+            </ion-select>
+          </ion-item>
+          <ion-list-header>
+            Domestic Specifications
+          </ion-list-header>
+          <ion-item>
+            <ion-label floating>Number of Bedrooms</ion-label>
+            <ion-input formControlName="numberOfBedroomsDomestic" type="text" value=""></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Number of Bathrooms</ion-label>
+            <ion-input formControlName="numberOfBathroomsDomestic" type="text" value=""></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Number of Kitchens</ion-label>
+            <ion-input formControlName="numberOfKitchensDomestic"  type="text" value=""></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Number of Other rooms(Dinning etc. )</ion-label>
+            <ion-input  formControlName="numberOfOtherRoomsDomestic" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Number of Levels</ion-label>
+            <ion-input type="number"  formControlName="numberOfLevelsDomestic"></ion-input>
+          </ion-item>
+         <ion-list-header>
+            Office Specifications
+          </ion-list-header>
+          <ion-item>
+            <ion-label fixed>Number of rooms</ion-label>
+            <ion-input formControlName="numberOfRoomsOffice" type="text" value=""></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>Number of Bathrooms</ion-label>
+            <ion-input formControlName="numberOfBathroomsOffice"  type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>Number of Kitchens</ion-label>
+            <ion-input formControlName="numberOfKitchensOffice" type="text" value=""></ion-input>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-label floating>Area of Office</ion-label>
+            <ion-input type="number" placeholder="Number of Levels" formControlName="numberOfLevelsOffice"></ion-input>
+          </ion-item>
+
+          <ion-list-header>
+            Additional Tasks
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Daenerys Targaryen</ion-label>
+            <ion-checkbox color="dark" checked="true"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Notes</ion-label>
+            <ion-textarea formControlName="notes"></ion-textarea>
+          </ion-item>
+
+        </form>
+
+      </ion-list>
+
+      <button ion-button full color="primary" (click)="save()">Create Account!</button>
+
+    </ion-slide>
+    <ion-slide>
+
+      <ion-list no-lines>
+
+        <form [formGroup]="slideThreeForm"> 
+          <ion-item>
+            <ion-label floating>Date and time of first service</ion-label>
+            <ion-datetime formControlName="firstServiceDate" displayFormat="MM/DD/YYYY"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Flat Rate</ion-label>
+            <ion-input formControlName="flatRate" ></ion-input>
+          </ion-item>
+
+        </form>
+
+      </ion-list>
+
+      <button ion-button full color="primary" (click)="save()">Submit!</button>
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
